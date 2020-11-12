@@ -4,14 +4,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping
-public class calisdigimizYer {
-    public String m;
+import java.util.List;
 
-    @GetMapping("/salam")
-    public String miri(){
-        m = "Salamm";
-        return m;
+@RestController
+@RequestMapping("/adlar")
+public class calisdigimizYer {
+    private adlarRepo adlarrepo;
+
+    public calisdigimizYer(adlarRepo ar){
+        this.adlarrepo = ar;
     }
+    @GetMapping
+    List<adlar> adlarr(){
+        return adlarrepo.findAll();
+    }
+
+
 }
